@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@color/colorAccent"
             android:onClick="Binarios"
             android:text="Binario al resto de sistemas"
             android:textAllCaps="false" />
