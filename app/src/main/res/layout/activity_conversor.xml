@@ -17,10 +17,10 @@
     <EditText
         android:id="@+id/txt_Numero"
         android:layout_width="match_parent"
-        android:layout_height="73dp"
+        android:layout_height="58dp"
         android:ems="10"
-        android:hint="Ingrese un numero"
-        android:textSize="25dp" />
+        android:inputType="textPersonName"
+        android:hint="Ingrese un numero"/>
 
     <Button
         android:id="@+id/btn_Calcular"

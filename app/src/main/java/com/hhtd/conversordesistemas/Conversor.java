@@ -1,6 +1,7 @@
 package com.hhtd.conversordesistemas;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -11,6 +12,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Conversor extends AppCompatActivity {
     public String TipoConversion="",Conversion;
     EditText Num;
@@ -24,7 +29,7 @@ public class Conversor extends AppCompatActivity {
         /*Definir textbox*/
         Num=(EditText)findViewById(R.id.txt_Numero);
         /*Hacer que las letras introducidas sean mayusculas*/
-        /*InputFilter Mayuscula=new InputFilter() {
+        InputFilter Mayuscula=new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
                 try {
@@ -41,7 +46,8 @@ public class Conversor extends AppCompatActivity {
                 }
             }
         };
-        Num.setFilters(new InputFilter[]{Mayuscula});*/
+        /*Activar filtro*/
+        Num.setFilters(new InputFilter[]{Mayuscula});
         /*Definir labels*/
         Base_Inicial=(TextView)findViewById(R.id.lbl_Base_Inicial);
         Base1=(TextView)findViewById(R.id.lbl_Base1);
@@ -56,7 +62,7 @@ public class Conversor extends AppCompatActivity {
         switch (Conversion){
             case "Binario":
                 /*Definir el input type*/
-                //Num.setInputType(InputType.TYPE_CLASS_NUMBER);
+                Num.setInputType(InputType.TYPE_CLASS_NUMBER);
                 /*Validar textbox*/
                 Num.setKeyListener(DigitsKeyListener.getInstance("01"));
                 Base_Inicial.setText("Binario:");
@@ -66,9 +72,10 @@ public class Conversor extends AppCompatActivity {
                 break;
             case "Decimal":
                 /*Definir el input type*/
-                //Num.setInputType(InputType.TYPE_CLASS_NUMBER);
+                Num.setInputType(InputType.TYPE_CLASS_NUMBER);
                 /*Validar textbox*/
                 Num.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+                /*Cambiar texto de los labels*/
                 Base_Inicial.setText("Decimal:");
                 Base1.setText("Binario:");
                 Base2.setText("Hexadecimal:");
@@ -76,9 +83,26 @@ public class Conversor extends AppCompatActivity {
                 break;
             case "Hexadecimal":
                 /*Definir el input type*/
-                //Num.setInputType(InputType.TYPE_TEXT_VARIATION_NORMAL);
+                Num.setInputType(InputType.TYPE_CLASS_TEXT);
                 /*Validar textbox*/
-                Num.setKeyListener(DigitsKeyListener.getInstance("ABCDEFabcdef"));
+                InputFilter Hexa=new InputFilter() {
+                    @Override
+                    public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                        for(int i=start;i<end;i++){
+                            String Validar=String.valueOf(source.charAt(i));
+                            Pattern Pat=Pattern.compile("[ABCDEFabcdef1234567890]");
+                            Matcher Match=Pat.matcher(Validar);
+                            boolean Valido=Match.matches();
+                            if(!Valido){
+                                return "";
+                            }
+                        }
+                        return null;
+                    }
+                };
+                /*Actival filtro*/
+                Num.setFilters(new InputFilter[]{Hexa});
+                /*Cambiar texto de los labels*/
                 Base_Inicial.setText("Hexadecimal:");
                 Base1.setText("Binario:");
                 Base2.setText("Decimal:");
@@ -86,9 +110,10 @@ public class Conversor extends AppCompatActivity {
                 break;
             case "Octal":
                 /*Definir el input type*/
-                //Num.setInputType(InputType.TYPE_CLASS_NUMBER);
+                Num.setInputType(InputType.TYPE_CLASS_NUMBER);
                 /*Validar textbox*/
                 Num.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+                /*Cambiar texto de los labels*/
                 Base_Inicial.setText("Octal:");
                 Base1.setText("Binario:");
                 Base2.setText("Decimal:");
