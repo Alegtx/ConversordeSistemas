@@ -98,31 +98,64 @@ public class Conversor extends AppCompatActivity {
     }
     public void Calcular(View v){
         try{
-            Base1_Total=(TextView)findViewById(R.id.lbl_Base1_Total);
-            Base2_Total=(TextView)findViewById(R.id.lbl_Base2_Total);
-            Base3_Total=(TextView)findViewById(R.id.lbl_Base3_Total);
-            /*Definir variables*/
-            Numero=Integer.parseInt(Num.getText().toString());
-            /*Segun los datos recibidos de la otra activity cambiar el tipo de operacion para la conversion*/
-            switch (Conversion){
-                case "Binario":
-                    Toast.makeText(getApplicationContext(),"Binario",Toast.LENGTH_SHORT).show();
-                    break;
-                case "Decimal":
-                    Toast.makeText(getApplicationContext(),"Decimal",Toast.LENGTH_SHORT).show();
-                    break;
-                case "Hexadecimal":
-                    Toast.makeText(getApplicationContext(),"Hexadecimal",Toast.LENGTH_SHORT).show();
-                    break;
-                case "Octal":
-                    Toast.makeText(getApplicationContext(),"Octal",Toast.LENGTH_SHORT).show();
-                    break;
-            }
+           if(Num.getText().toString().equals("")){
+               Num.setText("0");
+           }
+           else{
+               Base1_Total=(TextView)findViewById(R.id.lbl_Base1_Total);
+               Base2_Total=(TextView)findViewById(R.id.lbl_Base2_Total);
+               Base3_Total=(TextView)findViewById(R.id.lbl_Base3_Total);
+               /*Definir variables*/
+               Numero=Integer.parseInt(Num.getText().toString());
+               /*Segun los datos recibidos de la otra activity cambiar el tipo de operacion para la conversion*/
+               switch (Conversion){
+                   case "Binario":
+                       int Exponente, Decimal, Digito = 0, Aux;
+                       boolean esBinario;
+                       do {
+                           //comprobamos que sea un número binario es decir
+                           //que este formado solo por ceros y unos
+                           esBinario = true;
+                           Aux = Numero;
+                           while (Aux != 0) {
+                               Digito = Aux % 10; //última cifra del números
+                               if (Digito != 0 && Digito != 1) { //si no es 0 ó 1
+                                   esBinario = false; //no es un número binario
+                               }
+                               Aux = Aux / 10; //quitamos la última cifra para repetir el proceso
+                           }
+                       } while (!esBinario); //se vuelve a pedir si no es binario
+                       Exponente = 0;
+                       Decimal = 0; //será el equivalente en base decimal
+                       Toast.makeText(getApplicationContext(),"Numero: "+Decimal,Toast.LENGTH_SHORT).show();
+                       while (Numero != 0) {
+                           //se toma la última cifra
+                           Digito = Numero % 10;
+                           //se multiplica por la potencia de 2 correspondiente y se suma al número
+                           Decimal = Decimal + Digito * (int) Math.pow(2, Exponente);
+                           //se aumenta el exponente
+                           Exponente++;
+                           //se quita la última cifra para repetir el proceso
+                           Numero = Numero / 10;
+                           Toast.makeText(getApplicationContext(),"Binario",Toast.LENGTH_SHORT).show();
+                       }
+                       Base1_Total.setText(Decimal);
+                       break;
+                   case "Decimal":
+                       Toast.makeText(getApplicationContext(),"Decimal",Toast.LENGTH_SHORT).show();
+                       break;
+                   case "Hexadecimal":
+                       Toast.makeText(getApplicationContext(),"Hexadecimal",Toast.LENGTH_SHORT).show();
+                       break;
+                   case "Octal":
+                       Toast.makeText(getApplicationContext(),"Octal",Toast.LENGTH_SHORT).show();
+                       break;
+               }
+           }
         }
         catch (Exception e){
-            Num.setText("0");
             /*En caso de error mostrar un mensaje*/
-            //Toast.makeText(getApplicationContext(),"Error algo paso",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"Error algo paso: \n"+e,Toast.LENGTH_SHORT).show();
         }
     }
     public void Atras(View v){
