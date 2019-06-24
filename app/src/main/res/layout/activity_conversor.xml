@@ -20,8 +20,7 @@
         android:layout_height="73dp"
         android:ems="10"
         android:hint="Ingrese un numero"
-        android:inputType="number"
-        android:textSize="25dp"/>
+        android:textSize="25dp" />
 
     <Button
         android:id="@+id/btn_Calcular"
@@ -80,8 +79,8 @@
         android:id="@+id/btn_Atras"
         android:layout_width="111dp"
         android:layout_height="63dp"
+        android:onClick="Atras"
         android:text="Atras"
-        android:textSize="20dp"
-        android:onClick="Atras"/>
+        android:textSize="20dp" />
 
 </LinearLayout>
