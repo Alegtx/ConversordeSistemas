@@ -123,65 +123,145 @@ public class Conversor extends AppCompatActivity {
     }
     public void Calcular(View v){
         try{
-           if(Num.getText().toString().equals("")){
+            Base1_Total=(TextView)findViewById(R.id.lbl_Base1_Total);
+            Base2_Total=(TextView)findViewById(R.id.lbl_Base2_Total);
+            Base3_Total=(TextView)findViewById(R.id.lbl_Base3_Total);
+            if(Num.getText().toString().equals("")){
                Num.setText("0");
-           }
-           else{
-               Base1_Total=(TextView)findViewById(R.id.lbl_Base1_Total);
-               Base2_Total=(TextView)findViewById(R.id.lbl_Base2_Total);
-               Base3_Total=(TextView)findViewById(R.id.lbl_Base3_Total);
-               /*Definir variables*/
-               Numero=Integer.parseInt(Num.getText().toString());
-               /*Segun los datos recibidos de la otra activity cambiar el tipo de operacion para la conversion*/
-               switch (Conversion){
-                   case "Binario":
-                       int Exponente, Decimal, Digito = 0, Aux;
-                       boolean esBinario;
-                       do {
-                           //comprobamos que sea un número binario es decir
-                           //que este formado solo por ceros y unos
-                           esBinario = true;
-                           Aux = Numero;
-                           while (Aux != 0) {
-                               Digito = Aux % 10; //última cifra del números
-                               if (Digito != 0 && Digito != 1) { //si no es 0 ó 1
-                                   esBinario = false; //no es un número binario
-                               }
-                               Aux = Aux / 10; //quitamos la última cifra para repetir el proceso
-                           }
-                       } while (!esBinario); //se vuelve a pedir si no es binario
-                       Exponente = 0;
-                       Decimal = 0; //será el equivalente en base decimal
-                       Toast.makeText(getApplicationContext(),"Numero: "+Decimal,Toast.LENGTH_SHORT).show();
-                       while (Numero != 0) {
-                           //se toma la última cifra
-                           Digito = Numero % 10;
-                           //se multiplica por la potencia de 2 correspondiente y se suma al número
-                           Decimal = Decimal + Digito * (int) Math.pow(2, Exponente);
-                           //se aumenta el exponente
-                           Exponente++;
-                           //se quita la última cifra para repetir el proceso
-                           Numero = Numero / 10;
-                           Toast.makeText(getApplicationContext(),"Binario",Toast.LENGTH_SHORT).show();
-                       }
-                       Base1_Total.setText(Decimal);
-                       break;
-                   case "Decimal":
-                       Toast.makeText(getApplicationContext(),"Decimal",Toast.LENGTH_SHORT).show();
-                       break;
-                   case "Hexadecimal":
-                       Toast.makeText(getApplicationContext(),"Hexadecimal",Toast.LENGTH_SHORT).show();
-                       break;
-                   case "Octal":
-                       Toast.makeText(getApplicationContext(),"Octal",Toast.LENGTH_SHORT).show();
-                       break;
-               }
-           }
+            }
+            else{
+                /*Definir variables*/
+                Numero=Integer.parseInt(Num.getText().toString());
+                String Binario, Decimal, Hexadecimal, Octal;
+                /*Segun los datos recibidos de la otra activity cambiar el tipo de operacion para la conversion*/
+                switch (Conversion){
+                    case "Binario":
+                        Decimal=String.valueOf(Binario_Decimal(Num.getText().toString()));
+                        Base1_Total.setText(Decimal);
+                        Hexadecimal=String.valueOf(Binario_Hexadecimal(Num.getText().toString()));
+                        Base2_Total.setText(Hexadecimal);
+                        Octal=String.valueOf(Binario_Octal(Num.getText().toString()));
+                        Base3_Total.setText(Octal);
+                        break;
+                    case "Decimal":
+                        Binario=String.valueOf(Decimal_Binario(Num.getText().toString()));
+                        Base1_Total.setText(Binario);
+                        Hexadecimal=String.valueOf(Decimal_Hexadecimal(Num.getText().toString()));
+                        Base2_Total.setText(Hexadecimal);
+                        Octal=String.valueOf(Decimal_Octal(Num.getText().toString()));
+                        Base3_Total.setText(Octal);
+                        break;
+                    case "Octal":
+                        Binario=String.valueOf(Octal_Binario(Num.getText().toString()));
+                        Base1_Total.setText(Binario);
+                        Decimal=String.valueOf(Octal_Decimal(Num.getText().toString()));
+                        Base2_Total.setText(Decimal);
+                        Hexadecimal=String.valueOf(Octal_Hexadeciaml(Num.getText().toString()));
+                        Base3_Total.setText(Hexadecimal);
+                        break;
+                    case "Hexadecimal":
+                        Binario=String.valueOf(Hexadecimal_Binario(Num.getText().toString()));
+                        Base1_Total.setText(Binario);
+                        Decimal=String.valueOf(Hexadecimal_Decimal(Num.getText().toString()));
+                        Base2_Total.setText(Decimal);
+                        Octal=String.valueOf(Hexadecimal_Octal(Num.getText().toString()));
+                        Base3_Total.setText(Octal);
+                        break;
+                }
+            }
         }
         catch (Exception e){
             /*En caso de error mostrar un mensaje*/
             Toast.makeText(getApplicationContext(),"Error algo paso: \n"+e,Toast.LENGTH_SHORT).show();
         }
+    }
+    /*Binario al resto de sistemas*/
+    public int Binario_Decimal(String Valor)
+    {
+        /*Conversion binario a decimal*/
+        int Decimal=Integer.parseInt(Valor,2);
+        return Decimal;
+    }
+    public String Binario_Octal(String Valor)
+    {
+        /*Conversion binario a octal*/
+        int Decimal=Integer.parseInt(Valor,2);
+        Valor=Integer.toOctalString(Decimal);
+        return Valor;
+    }
+    public String Binario_Hexadecimal(String Valor)
+    {
+        /*Conversion binario a hexadecimal*/
+        int Decimal=Integer.parseInt(Valor,2);
+        Valor=Integer.toHexString(Decimal);
+        return Valor;
+    }
+    /*Decimal al resto de sistemas*/
+    public String Decimal_Binario(String Valor)
+    {
+        /*Conversion decimal a binario*/
+        int Decimal=Integer.parseInt(Valor);
+        Valor=Integer.toBinaryString(Decimal);
+        return Valor;
+    }
+
+    public String Decimal_Hexadecimal(String Valor)
+    {
+        /*Conversion decimal a hexadeciaml*/
+        int Decimal=Integer.parseInt(Valor);
+        Valor=Integer.toHexString(Decimal);
+        return Valor;
+    }
+
+    public String Decimal_Octal(String Valor)
+    {
+        /*Conversion decimal a octal*/
+        int Decimal=Integer.parseInt(Valor);
+        Valor=Integer.toOctalString(Decimal);
+        return Valor;
+    }
+    /*Hexadecimal al resto de sistemas*/
+    public int Hexadecimal_Decimal(String Valor)
+    {
+        int Decimal=Integer.parseInt(Valor,16);
+        return Decimal;
+    }
+
+    public String Hexadecimal_Binario(String Valor)
+    {
+        int Decimal=Integer.parseInt(Valor,16);
+        Valor=Integer.toBinaryString(Decimal);
+        return Valor;
+    }
+
+    public String Hexadecimal_Octal(String Valor)
+    {
+        int Decimal=Integer.parseInt(Valor,16);
+        Valor=Integer.toOctalString(Decimal);
+        return Valor;
+    }
+    /*Octal al resto de sistemas*/
+    public int Octal_Decimal(String Valor)
+    {
+        /*Conversion octal a decimal*/
+        int Decimal=Integer.parseInt(Valor,8);
+        return Decimal;
+    }
+
+    public String Octal_Binario(String Valor)
+    {
+        /*Conversion octal a binario*/
+        int Decimal=Integer.parseInt(Valor,8);
+        Valor=Integer.toBinaryString(Decimal);
+        return Valor;
+    }
+
+    public String Octal_Hexadeciaml(String Valor)
+    {
+        /*Conversion octal a hexadeciaml*/
+        int Decimal=Integer.parseInt(Valor,8);
+        Valor=Integer.toHexString(Decimal);
+        return Valor;
     }
     public void Atras(View v){
         CambiarVentana();
