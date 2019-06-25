@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:fontFamily="sans-serif"
-        android:text="Sistema Binario"
+        android:text="@string/SistemaBinario"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="25dp"
@@ -32,7 +32,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_orange_light"
             android:onClick="Binarios"
-            android:text="Binario al resto de sistemas"
+            android:text="@string/SistemaBinario_otros"
             android:textAllCaps="false" />
 
     </LinearLayout>
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:fontFamily="sans-serif"
-        android:text="Sistema Decimal"
+        android:text="@string/SistemaDecimal"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="25dp"
         android:typeface="monospace" />
@@ -60,7 +60,7 @@
             android:layout_weight="1"
             android:background="@color/colorAccent"
             android:onClick="Decimales"
-            android:text="Decimal al resto de sistemas"
+            android:text="@string/SistemaDecimal_otros"
             android:textAllCaps="false" />
 
     </LinearLayout>
@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:fontFamily="sans-serif"
-        android:text="Sistema Octal"
+        android:text="@string/SistemaOctal"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="25dp"
         android:typeface="monospace" />
@@ -88,7 +88,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_blue_dark"
             android:onClick="Octales"
-            android:text="Octal al resto de sistemas"
+            android:text="@string/SistemaOctal_otros"
             android:textAllCaps="false" />
 
     </LinearLayout>
@@ -98,7 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:fontFamily="sans-serif"
-        android:text="Sistema Hexadecimal"
+        android:text="@string/SistemaHexadecimal"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="25dp"
         android:typeface="monospace" />
@@ -116,7 +116,7 @@
             android:layout_weight="1"
             android:background="@android:color/holo_purple"
             android:onClick="Hexadecimales"
-            android:text="Hexadecimal al resto de sistemas"
+            android:text="@string/SistemaHexadecimal_otros"
             android:textAllCaps="false" />
 
     </LinearLayout>
