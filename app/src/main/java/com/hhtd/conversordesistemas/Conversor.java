@@ -112,7 +112,7 @@ public class Conversor extends AppCompatActivity {
                 /*Definir el input type*/
                 Num.setInputType(InputType.TYPE_CLASS_NUMBER);
                 /*Validar textbox*/
-                Num.setKeyListener(DigitsKeyListener.getInstance("0123456789"));
+                Num.setKeyListener(DigitsKeyListener.getInstance("01234567"));
                 /*Cambiar texto de los labels*/
                 Base_Inicial.setText("Octal:");
                 Base1.setText("Binario:");
@@ -136,35 +136,35 @@ public class Conversor extends AppCompatActivity {
                 /*Segun los datos recibidos de la otra activity cambiar el tipo de operacion para la conversion*/
                 switch (Conversion){
                     case "Binario":
-                        Decimal=String.valueOf(Binario_Decimal(Num.getText().toString()));
+                        Decimal=String.valueOf(Binario_Decimal(Num.getText().toString().toUpperCase()));
                         Base1_Total.setText(Decimal);
-                        Hexadecimal=String.valueOf(Binario_Hexadecimal(Num.getText().toString()));
+                        Hexadecimal=String.valueOf(Binario_Hexadecimal(Num.getText().toString().toUpperCase()));
                         Base2_Total.setText(Hexadecimal);
-                        Octal=String.valueOf(Binario_Octal(Num.getText().toString()));
+                        Octal=String.valueOf(Binario_Octal(Num.getText().toString().toUpperCase()));
                         Base3_Total.setText(Octal);
                         break;
                     case "Decimal":
-                        Binario=String.valueOf(Decimal_Binario(Num.getText().toString()));
+                        Binario=String.valueOf(Decimal_Binario(Num.getText().toString().toUpperCase()));
                         Base1_Total.setText(Binario);
-                        Hexadecimal=String.valueOf(Decimal_Hexadecimal(Num.getText().toString()));
+                        Hexadecimal=String.valueOf(Decimal_Hexadecimal(Num.getText().toString().toUpperCase()));
                         Base2_Total.setText(Hexadecimal);
-                        Octal=String.valueOf(Decimal_Octal(Num.getText().toString()));
+                        Octal=String.valueOf(Decimal_Octal(Num.getText().toString().toUpperCase()));
                         Base3_Total.setText(Octal);
                         break;
                     case "Octal":
-                        Binario=String.valueOf(Octal_Binario(Num.getText().toString()));
+                        Binario=String.valueOf(Octal_Binario(Num.getText().toString().toUpperCase()));
                         Base1_Total.setText(Binario);
-                        Decimal=String.valueOf(Octal_Decimal(Num.getText().toString()));
+                        Decimal=String.valueOf(Octal_Decimal(Num.getText().toString().toUpperCase()));
                         Base2_Total.setText(Decimal);
-                        Hexadecimal=String.valueOf(Octal_Hexadeciaml(Num.getText().toString()));
+                        Hexadecimal=String.valueOf(Octal_Hexadeciaml(Num.getText().toString().toUpperCase()));
                         Base3_Total.setText(Hexadecimal);
                         break;
                     case "Hexadecimal":
-                        Binario=String.valueOf(Hexadecimal_Binario(Num.getText().toString()));
+                        Binario=String.valueOf(Hexadecimal_Binario(Num.getText().toString().toUpperCase()));
                         Base1_Total.setText(Binario);
-                        Decimal=String.valueOf(Hexadecimal_Decimal(Num.getText().toString()));
+                        Decimal=String.valueOf(Hexadecimal_Decimal(Num.getText().toString().toUpperCase()));
                         Base2_Total.setText(Decimal);
-                        Octal=String.valueOf(Hexadecimal_Octal(Num.getText().toString()));
+                        Octal=String.valueOf(Hexadecimal_Octal(Num.getText().toString().toUpperCase()));
                         Base3_Total.setText(Octal);
                         break;
                 }
@@ -207,7 +207,7 @@ public class Conversor extends AppCompatActivity {
 
     public String Decimal_Hexadecimal(String Valor)
     {
-        /*Conversion decimal a hexadeciaml*/
+        /*Conversion decimal a hexadecimal*/
         int Decimal=Integer.parseInt(Valor);
         Valor=Integer.toHexString(Decimal);
         return Valor;
