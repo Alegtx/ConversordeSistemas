@@ -1,4 +1,4 @@
-package com.hhtd.conversordesistemas;
+package com.proyectomovil.conversordesistemas;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.hhtd.conversordesistemas", appContext.getPackageName());
+        assertEquals("com.proyectomovil.conversordesistemas", appContext.getPackageName());
     }
 }
