@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#000000"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Main">
@@ -10,9 +11,13 @@
     <TextView
         android:id="@+id/lbl_Binario"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="47dp"
+        android:fontFamily="sans-serif"
         android:text="Sistema Binario"
-        android:textSize="20dp" />
+        android:textAppearance="@style/TextAppearance.AppCompat"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25dp"
+        android:typeface="monospace" />
 
     <LinearLayout
         android:id="@+id/lyh_Binario"
@@ -23,8 +28,9 @@
         <Button
             android:id="@+id/btn_Binario"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@android:color/holo_orange_light"
             android:onClick="Binarios"
             android:text="Binario al resto de sistemas"
             android:textAllCaps="false" />
@@ -34,9 +40,12 @@
     <TextView
         android:id="@+id/lbl_Decimal"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="44dp"
+        android:fontFamily="sans-serif"
         android:text="Sistema Decimal"
-        android:textSize="20dp" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25dp"
+        android:typeface="monospace" />
 
     <LinearLayout
         android:id="@+id/lyh_Decimal"
@@ -49,6 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@color/colorAccent"
             android:onClick="Decimales"
             android:text="Decimal al resto de sistemas"
             android:textAllCaps="false" />
@@ -58,9 +68,12 @@
     <TextView
         android:id="@+id/lbl_Octal"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="45dp"
+        android:fontFamily="sans-serif"
         android:text="Sistema Octal"
-        android:textSize="20dp" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25dp"
+        android:typeface="monospace" />
 
     <LinearLayout
         android:id="@+id/lyh_Octal"
@@ -73,6 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@android:color/holo_blue_dark"
             android:onClick="Octales"
             android:text="Octal al resto de sistemas"
             android:textAllCaps="false" />
@@ -82,9 +96,12 @@
     <TextView
         android:id="@+id/lbl_Hexadecimal"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="44dp"
+        android:fontFamily="sans-serif"
         android:text="Sistema Hexadecimal"
-        android:textSize="20dp" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="25dp"
+        android:typeface="monospace" />
 
     <LinearLayout
         android:id="@+id/lyh_Hexadecimal"
@@ -97,6 +114,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@android:color/holo_purple"
             android:onClick="Hexadecimales"
             android:text="Hexadecimal al resto de sistemas"
             android:textAllCaps="false" />

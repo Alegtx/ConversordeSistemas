@@ -14,6 +14,11 @@ public class Main extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Colocar el icono al costado del nombre
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
+
         /*Cambiar el texto del titulo*/
         this.setTitle("Conversor de bases");
     }

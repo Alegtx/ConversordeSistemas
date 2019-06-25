@@ -26,6 +26,9 @@ public class Conversor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conversor);
+        //Colocar el icono al costado del nombre
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
         /*Definir textbox*/
         Num=(EditText)findViewById(R.id.txt_Numero);
         /*Hacer que las letras introducidas sean mayusculas*/
