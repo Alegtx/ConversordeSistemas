@@ -1,4 +1,4 @@
-package com.proyectomovil.conversordesistemas;
+package com.proyectomovil.conversor_sistemas;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

@@ -1,4 +1,4 @@
-package com.proyectomovil.conversordesistemas;
+package com.proyectomovil.conversor_sistemas;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

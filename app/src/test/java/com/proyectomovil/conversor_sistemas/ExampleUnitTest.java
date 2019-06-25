@@ -1,4 +1,4 @@
-package com.proyectomovil.conversordesistemas;
+package com.proyectomovil.conversor_sistemas;
 
 import org.junit.Test;
 
